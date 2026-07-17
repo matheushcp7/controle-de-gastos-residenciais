@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ControleGastosApi.Data;
+using ControleGastosApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<Banco>(options =>
     options.UseSqlite("Data Source=banco.db"));
 
-// 2. Configura o CORS para liberar o acesso do Front-End React
+// 2. Adiciona o serviço de transações
+builder.Services.AddScoped<ITransacaoService, TransacaoService>();
+
+// 3. Configura o CORS para liberar o acesso do Front-End React
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirReact", policy =>
@@ -22,7 +26,7 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// 3. Aplica o CORS e os Controllers
+// 4. Aplica o CORS e os Controllers
 app.UseCors("PermitirReact");
 app.MapControllers();
 

@@ -69,7 +69,8 @@ export default function App() {
 
   const deletarPessoa = async (id: number) => {
     await axios.delete(`${API}/pessoas/${id}`);
-    if (extratoPessoaId === id.toString()) setExtratoPessoaId(''); // Limpa aba se deletar a pessoa selecionada
+    // Limpa aba se deletar a pessoa selecionada
+    if (extratoPessoaId === id.toString()) setExtratoPessoaId(''); 
     carregarDados();
   };
 
@@ -84,12 +85,18 @@ export default function App() {
       });
       setDescricao(''); setValor('');
       carregarDados();
-      // Atualiza o extrato caso a transação seja para a pessoa que já está selecionada
+      
       if (extratoPessoaId === pessoaId) {
         buscarExtrato(pessoaId);
       }
-    } catch (err: any) {
-      alert(err.response?.data || 'Erro ao cadastrar transação');
+    } catch (err) {
+      // Verifica se é um erro do Axios (ex: o erro 400 BadRequest do seu backend)
+      if (axios.isAxiosError(err)) {
+        alert(err.response?.data || 'Erro ao cadastrar transação');
+      } else {
+        // Cai aqui se for um erro genérico de JavaScript ou falha de internet
+        alert('Ocorreu um erro inesperado.');
+      }
     }
   };
 
