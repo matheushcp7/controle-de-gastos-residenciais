@@ -251,9 +251,9 @@ export default function App() {
 // Estilos padronizados
 const colorBlue = '#397afc';
 const colorRed = '#f83f3f';
-const colorGreen = '#10b981';
 const colorWhite = '#ebe9e9';
 const colorBlack = '#383f49';
+const colorGreen = '#383f49'; {/*Cor dos textos de Receita*/}
 const titulosStyle = {backgroundColor: colorBlue, borderRadius: '8px', marginTop: 0, color: colorWhite, borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem' };
 const inputStyle = { padding: '0.5rem',backgroundColor: '#fff', color: colorBlack, border: '1px solid #d1d5db', borderRadius: '4px', flex: 1, outline: 'none' };
 const btnPrimary = { backgroundColor: colorBlack, color: colorWhite, border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' };
