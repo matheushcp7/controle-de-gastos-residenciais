@@ -111,4 +111,17 @@ public class ApiControllers : ControllerBase
             }
         });
     }
+
+    /// <summary>   
+    /// Retorna todas as transações associadas a uma pessoa específica com base no ID fornecido.
+    /// </summary>
+    /// <param name="id">Representa o ID da pessoa cujas transações serão retornadas.</param>
+    [HttpGet("pessoas/{id}/transacoes")]
+    public async Task<ActionResult<IEnumerable<Transacao>>> GetTransacoesPorPessoa(int id)
+    {
+        var transacoes = await _context.Transacoes
+                                       .Where(t => t.PessoaId == id)
+                                       .ToListAsync();
+        return Ok(transacoes);
+    }
 }
