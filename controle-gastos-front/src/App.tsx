@@ -232,7 +232,7 @@ export default function App() {
                     transacoesFiltradas.map(t => (
                       <tr key={t.id} style={{ borderBottom: '1px solid #e5e7eb' }}>
                         <td style={{...tdStyle, color: colorBlack }}>{t.descricao}</td>
-                        <td style={{...tdStyle, color: t.tipo === 1 ? colorGreen : colorRed }}>{t.tipo === 1 ? 'Receita' : 'Despesa'}</td>
+                        <td style={{...tdStyle, color: colorBlack }}>{t.tipo === 1 ? 'Receita' : 'Despesa'}</td>
                         <td style={{...tdStyle, color: t.tipo === 1 ? colorGreen : colorRed, fontWeight: 'bold' }}>R$ {t.valor.toFixed(2)}</td>
                       </tr>
                     ))
