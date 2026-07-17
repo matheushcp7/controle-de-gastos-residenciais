@@ -1,0 +1,5 @@
+[Bb]in/
+[Oo]bj/
+banco.db
+banco.db-shm
+banco.db-wal
