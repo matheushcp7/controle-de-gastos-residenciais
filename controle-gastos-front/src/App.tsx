@@ -171,9 +171,9 @@ export default function App() {
                 {totais.detalhes.map((d, i) => (
                   <tr key={i} style={{ borderBottom: '1px solid #e5e7eb' }}>
                     <td style={{...tdStyle, color: colorBlack }}>{d.nome}</td>
-                    <td style={{...tdStyle, color: colorGreen, fontWeight: 'bold' }}>R$ {d.totalReceitas.toFixed(2)}</td>
-                    <td style={{...tdStyle, color: colorRed, fontWeight: 'bold' }}>R$ {d.totalDespesas.toFixed(2)}</td>
-                    <td style={{...tdStyle, fontWeight: 'bold', color: d.saldo >= 0 ? colorGreen : colorRed }}>R$ {d.saldo.toFixed(2)}</td>
+                    <td style={{...tdStyle, color: colorReceita, fontWeight: 'bold' }}>R$ {d.totalReceitas.toFixed(2)}</td>
+                    <td style={{...tdStyle, color: colorDespesa , fontWeight: 'bold' }}>R$ {d.totalDespesas.toFixed(2)}</td>
+                    <td style={{...tdStyle, fontWeight: 'bold', color: d.saldo >= 0 ? colorReceita : colorDespesa }}>R$ {d.saldo.toFixed(2)}</td>
                   </tr>
                 ))}
                 <tr style={{ backgroundColor: colorBlue, color: '#fff' }}>
@@ -210,9 +210,9 @@ export default function App() {
                 
                 return resumo ? (
                   <div style={{ display: 'flex', gap: '2rem', marginBottom: '1.5rem', backgroundColor: '#fff', padding: '1rem', borderRadius: '8px' }}>
-                    <div><strong style={{ color: colorBlack }}>Receitas:</strong> <span style={{ color: colorGreen, fontWeight: 'bold' }}>R$ {resumo.totalReceitas.toFixed(2)}</span></div>
-                    <div><strong style={{ color: colorBlack }}>Despesas:</strong> <span style={{ color: colorRed, fontWeight: 'bold' }}>R$ {resumo.totalDespesas.toFixed(2)}</span></div>
-                    <div><strong style={{ color: colorBlack }}>Saldo:</strong> <span style={{ fontWeight: 'bold', color: resumo.saldo >= 0 ? colorGreen : colorRed }}>R$ {resumo.saldo.toFixed(2)}</span></div>
+                    <div><strong style={{ color: colorBlack }}>Receitas:</strong> <span style={{ color: colorReceita, fontWeight: 'bold' }}>R$ {resumo.totalReceitas.toFixed(2)}</span></div>
+                    <div><strong style={{ color: colorBlack }}>Despesas:</strong> <span style={{ color: colorDespesa, fontWeight: 'bold' }}>R$ {resumo.totalDespesas.toFixed(2)}</span></div>
+                    <div><strong style={{ color: colorBlack }}>Saldo:</strong> <span style={{ fontWeight: 'bold', color: resumo.saldo >= 0 ? colorReceita : colorDespesa }}>R$ {resumo.saldo.toFixed(2)}</span></div>
                   </div>
                 ) : null;
               })()}
@@ -233,7 +233,7 @@ export default function App() {
                       <tr key={t.id} style={{ borderBottom: '1px solid #e5e7eb' }}>
                         <td style={{...tdStyle, color: colorBlack }}>{t.descricao}</td>
                         <td style={{...tdStyle, color: colorBlack }}>{t.tipo === 1 ? 'Receita' : 'Despesa'}</td>
-                        <td style={{...tdStyle, color: t.tipo === 1 ? colorGreen : colorRed, fontWeight: 'bold' }}>R$ {t.valor.toFixed(2)}</td>
+                        <td style={{...tdStyle, color: t.tipo === 1 ? colorReceita : colorDespesa, fontWeight: 'bold' }}>R$ {t.valor.toFixed(2)}</td>
                       </tr>
                     ))
                   )}
@@ -250,10 +250,10 @@ export default function App() {
 
 // Estilos padronizados
 const colorBlue = '#397afc';
-const colorRed = '#f83f3f';
+const colorDespesa = '#f83f3f';
 const colorWhite = '#ebe9e9';
 const colorBlack = '#383f49';
-const colorGreen = '#383f49'; {/*Cor dos textos de Receita*/}
+const colorReceita = '#383f49'; {/*Cor dos textos de Receita*/}
 const titulosStyle = {backgroundColor: colorBlue, borderRadius: '8px', marginTop: 0, color: colorWhite, borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem' };
 const inputStyle = { padding: '0.5rem',backgroundColor: '#fff', color: colorBlack, border: '1px solid #d1d5db', borderRadius: '4px', flex: 1, outline: 'none' };
 const btnPrimary = { backgroundColor: colorBlack, color: colorWhite, border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' };
